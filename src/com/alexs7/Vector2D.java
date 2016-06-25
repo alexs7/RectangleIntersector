@@ -79,7 +79,7 @@ public class Vector2D {
     }
 
     private static double getMax(ArrayList<Point> projections, Vector2D axis) {
-        double max = Double.MIN_VALUE;
+        double max = -Double.MAX_VALUE;
         double value;
 
         for(Point projection : projections){
