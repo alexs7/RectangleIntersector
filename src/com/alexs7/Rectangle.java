@@ -21,6 +21,7 @@ public class Rectangle {
     }
 
     public boolean intersect(Rectangle rectangle){
+        boolean intersect = true;
 
         Vector2D vector01Rec01 = new Vector2D(p1,p2);
         Vector2D vector02Rec01 = new Vector2D(p3,p2);
@@ -44,6 +45,7 @@ public class Rectangle {
         ArrayList<Point> projectionsRec01 = new ArrayList<>();
         ArrayList<Point> projectionsRec02 = new ArrayList<>();
 
+        mainloop:
         for (Vector2D normal : normals){
 
             for (Point point : getAllPoints()){
@@ -54,16 +56,16 @@ public class Rectangle {
                 projectionsRec02.add(Vector2D.getProjection(point,normal));
             }
 
-            boolean overlap = Vector2D.projectionsOverlap(projectionsRec01,projectionsRec02);
+            boolean overlap = Vector2D.projectionsOverlap(projectionsRec01,projectionsRec02,normal);
+            if(!overlap){
+                intersect = false;
+                break mainloop;
+            }
             projectionsRec01.clear();
             projectionsRec02.clear();
-
         }
 
-//        Point projectionP01Rec01 = Vector2D.getProjection(p1, normalToVector01Rec01);
-//        Point projectionP03Rec01 = Vector2D.getProjection(p2, normalToVector01Rec01);
-
-        return false;
+        return intersect;
     }
 
     public ArrayList<Point> getAllPoints(){

@@ -29,11 +29,6 @@ public class Vector2D {
         return normalVectors;
     }
 
-    public Point getProjectionOfPointOnNormal(Point point, Vector2D normal){
-
-        return null;
-    }
-
     public static Point getProjection(Point point, Vector2D normal) {
         double x = ((point.getX() * normal.getXComponent() + point.getY() * normal.getYComponent()) /
                 (Math.pow(normal.getXComponent(),2) + Math.pow(normal.getYComponent(),2))) * normal.getXComponent();
@@ -51,7 +46,69 @@ public class Vector2D {
         return yComponent;
     }
 
-    public static boolean projectionsOverlap(ArrayList<Point> projections1, ArrayList<Point> projections2) {
-        return false;
+    public static boolean projectionsOverlap(ArrayList<Point> projectionsA, ArrayList<Point> projectionsB, Vector2D axis) {
+        projectionsA = removeDuplicates(projectionsA);
+        double maxA = getMax(projectionsA,axis);
+        double minA = getMin(projectionsA,axis);
+
+        projectionsB = removeDuplicates(projectionsB);
+        double maxB = getMax(projectionsB,axis);
+        double minB = getMin(projectionsB,axis);
+
+        if(minA > maxB || minB > maxA){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private static double getMin(ArrayList<Point> projections, Vector2D axis) {
+        double min = Double.MAX_VALUE;
+        double value;
+
+        for(Point projection : projections){
+            value = (projection.getX() * axis.getXComponent()) / Math.sqrt(Math.pow(axis.getXComponent(),2) + Math.pow(axis.getYComponent(),2)) +
+                    (projection.getY() * axis.getYComponent()) / Math.sqrt(Math.pow(axis.getXComponent(),2) + Math.pow(axis.getYComponent(),2));
+
+            if(min > value){
+                min = value;
+            }
+        }
+
+        return min;
+    }
+
+    private static double getMax(ArrayList<Point> projections, Vector2D axis) {
+        double max = Double.MIN_VALUE;
+        double value;
+
+        for(Point projection : projections){
+            value = (projection.getX() * axis.getXComponent()) / Math.sqrt(Math.pow(axis.getXComponent(),2) + Math.pow(axis.getYComponent(),2)) +
+                    (projection.getY() * axis.getYComponent()) / Math.sqrt(Math.pow(axis.getXComponent(),2) + Math.pow(axis.getYComponent(),2));
+
+            if(max < value){
+                max = value;
+            }
+        }
+
+        return max;
+    }
+
+    private static ArrayList<Point> removeDuplicates(ArrayList<Point> projections) {
+        ArrayList<Point> newProjections = new ArrayList<>();
+
+        for (Point point : projections){
+            boolean duplicated = false;
+            for (Point newPoint : newProjections){
+                if(newPoint.equals(point)){
+                    duplicated = true;
+                }
+            }
+            if(!duplicated){
+                newProjections.add(point);
+            }
+        }
+
+        return newProjections;
     }
 }
