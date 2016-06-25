@@ -25,18 +25,12 @@ public class RectangleFileLoader {
     }
 
     private Rectangle getRectangleFromString(String line) {
-        Rectangle rectangle = null;
-        Point p1;
-        Point p2;
-        Point p3;
-        Point p4;
-        for (int i = 0; i < line.length(); i++) {
-            p1 = new Point(Double.parseDouble(String.valueOf(line.charAt(0))),Double.parseDouble(String.valueOf(line.charAt(2))));
-            p2 = new Point(Double.parseDouble(String.valueOf(line.charAt(4))),Double.parseDouble(String.valueOf(line.charAt(6))));
-            p3 = new Point(Double.parseDouble(String.valueOf(line.charAt(8))),Double.parseDouble(String.valueOf(line.charAt(10))));
-            p4 = new Point(Double.parseDouble(String.valueOf(line.charAt(12))),Double.parseDouble(String.valueOf(line.charAt(14))));
-            rectangle = new Rectangle(p1,p2,p3,p4);
-        }
+        String[] lineArray = line.split(" ");
+        Point p1 = new Point(Double.parseDouble(lineArray[0]), Double.parseDouble(lineArray[1]));
+        Point p2 = new Point(Double.parseDouble(lineArray[2]), Double.parseDouble(lineArray[3]));
+        Point p3 = new Point(Double.parseDouble(lineArray[4]), Double.parseDouble(lineArray[5]));
+        Point p4 = new Point(Double.parseDouble(lineArray[6]), Double.parseDouble(lineArray[7]));
+        Rectangle rectangle = new Rectangle(p1,p2,p3,p4);
         return rectangle;
     }
 }
