@@ -18,6 +18,7 @@ public class RectangleFileLoader {
                 stream.forEach(line -> rectangles.add(getRectangleFromString(line)));
             }
         } catch (IOException e) {
+            System.out.println("File, rectangles.txt not found!");
             e.printStackTrace();
         }
 
