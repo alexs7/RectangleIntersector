@@ -15,6 +15,6 @@ Both files are found in this repository.
 Put both files in the same directory. Running ```java -jar rectangle.jar rectangles.txt``` will compare all rectangles in the give file,
 and print out if the intersect or not.
 
-I have already included 4 sample rectangles and below you can see a visualization of Rectangle 3 and 4 in the file, ```rectangles.txt```:
+I have already included 4 sample rectangles and below you can see a visualization of Rectangle 3 and 4 in the file (coordinates not accurate), ```rectangles.txt```:
 
 ![alt tag](https://s31.postimg.org/5jca44097/Screen_Shot_2016_06_26_at_21_17_24.png)
