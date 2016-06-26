@@ -12,8 +12,27 @@ This was developed on Java 8.
 In order to run this you would need 2 files, ```rectangle.jar``` and a files to read the rectangles from, ```rectangles.txt```.
 Both files are found in this repository.
 
-Put both files in the same directory. Running ```java -jar rectangle.jar rectangles.txt``` will compare all rectangles in the give file,
+Put both files in the same directory. Running ```java -jar rectangle.jar rectangles.txt``` will compare all rectangles in the given file,
 and print out if the intersect or not.
+
+The method that checks if an intersection has happened is: 
+
+```java
+public class Rectangle {
+
+    public Rectangle(Point p1, Point p2, Point p3, Point p4){
+	...
+	...
+    }
+
+    public boolean intersect(Rectangle rectangle){
+	...
+	...
+        return intersect;
+    }
+
+}
+ ```
 
 I have already included 4 sample rectangles and below you can see a visualization of Rectangle 3 and 4 in the file (coordinates not accurate), ```rectangles.txt```:
 
