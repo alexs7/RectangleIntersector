@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -14,12 +16,17 @@ public class RectangleFileLoader {
     public ArrayList<Rectangle> read(String location) {
         ArrayList<Rectangle> rectangles = new ArrayList<>();
         try {
-            Stream<String> stream = Files.lines(Paths.get(location)); {
-                stream.forEach(line -> rectangles.add(getRectangleFromString(line)));
-            }
+            Stream<String> stream = Files.lines(Paths.get(location));
+
+            List<String> result = stream.filter(
+                    line -> !"".equals(line))
+                    .collect(Collectors.toList());
+
+            result.forEach(
+                    line -> rectangles.add(getRectangleFromString(line))
+            );
         } catch (IOException e) {
             System.out.println("File, rectangles.txt not found!");
-            e.printStackTrace();
         }
 
         return rectangles;
