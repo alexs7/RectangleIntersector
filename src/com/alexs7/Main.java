@@ -5,11 +5,28 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        RectangleFileLoader loader = new RectangleFileLoader();
-        ArrayList<Rectangle> rectangles = loader.read("/Users/alex/Projects/interviews/HawkEye/mySolutions/rectangle/rectangles.txt");
 
-        if(rectangles.get(0).intersect(rectangles.get(1))){
-            System.out.println("They intersect");
+        String fileLocationArg;
+
+        if(args.length == 1 ){
+            fileLocationArg = args[0];
+        }else{
+            fileLocationArg = "rectangles.txt";
+        }
+
+        RectangleFileLoader loader = new RectangleFileLoader();
+        ArrayList<Rectangle> rectangles = loader.read(fileLocationArg);
+
+        for (int i = 0; i < rectangles.size(); i++) {
+            for (int j = i+1; j < rectangles.size() ; j++) {
+
+                if(rectangles.get(i).intersect(rectangles.get(j))){
+                    System.out.println("Rectangle "+i+" and Rectangle "+j+" intersect");
+                }else{
+                    System.out.println("Rectangle "+i+" and Rectangle "+j+" do not intersect");
+                }
+
+            }
         }
     }
 }
