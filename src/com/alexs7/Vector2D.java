@@ -29,6 +29,9 @@ public class Vector2D {
         return normalVectors;
     }
 
+    /*  It returns the projection of the point on the normal passed as argument.
+     *  The normal start from the origin. (0,0) up to (normal.x,normal.y)
+     */
     public static Point getProjection(Point point, Vector2D normal) {
         double x = ((point.getX() * normal.getXComponent() + point.getY() * normal.getYComponent()) /
                 (Math.pow(normal.getXComponent(),2) + Math.pow(normal.getYComponent(),2))) * normal.getXComponent();
@@ -36,14 +39,6 @@ public class Vector2D {
                 (Math.pow(normal.getXComponent(),2) + Math.pow(normal.getYComponent(),2))) * normal.getYComponent();
 
         return new Point(x,y);
-    }
-
-    public double getXComponent() {
-        return xComponent;
-    }
-
-    public double getYComponent() {
-        return yComponent;
     }
 
     public static boolean projectionsOverlap(ArrayList<Point> projectionsA, ArrayList<Point> projectionsB, Vector2D axis) {
@@ -92,6 +87,14 @@ public class Vector2D {
         }
 
         return max;
+    }
+
+    public double getXComponent() {
+        return xComponent;
+    }
+
+    public double getYComponent() {
+        return yComponent;
     }
 
     private static ArrayList<Point> removeDuplicates(ArrayList<Point> projections) {

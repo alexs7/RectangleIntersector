@@ -17,6 +17,7 @@ public class Main {
         RectangleFileLoader loader = new RectangleFileLoader();
         ArrayList<Rectangle> rectangles = loader.read(fileLocationArg);
 
+        //Looping through the rectangles and printing out if they intersect or not
         for (int i = 0; i < rectangles.size(); i++) {
             for (int j = i+1; j < rectangles.size() ; j++) {
 

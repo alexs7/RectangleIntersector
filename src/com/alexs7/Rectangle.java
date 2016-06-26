@@ -1,6 +1,5 @@
 package com.alexs7;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
