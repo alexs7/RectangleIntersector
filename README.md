@@ -10,6 +10,7 @@ Essentially, what this means is that if we project the vertices of the two polyg
 
 This was developed on Java 8.
 In order to run this you would need 2 files, ```rectangle.jar``` and a files to read the rectangles from, ```rectangles.txt```.
+The coordinates are stored as ```x1 y1 x2 y2 x3 y3 x4 y4``` in the ```rectangles.txt``` file.
 Both files are found in this repository.
 
 Put both files in the same directory. Running ```java -jar rectangle.jar rectangles.txt``` will compare all rectangles in the given file,
@@ -34,6 +35,6 @@ public class Rectangle {
 }
  ```
 
-I have already included 4 sample rectangles and below you can see a visualization of Rectangle 3 and 4 in the file (coordinates not accurate), ```rectangles.txt```:
+I have already included 4 sample rectangles and below you can see a rough visualization of Rectangle 3 and 4 in the file (these do not intersect of course), ```rectangles.txt```:
 
 ![alt tag](https://s31.postimg.org/5jca44097/Screen_Shot_2016_06_26_at_21_17_24.png)
